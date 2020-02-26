@@ -1,0 +1,240 @@
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+
+
+
+<h1>Simple Example with Angular</h1>
+<div class="">
+  <form class="form-horizontal" [formGroup]="profileForm">
+    <div class="form-group col-sm-4">
+      <label for="name" class="col-sm-2 control-label">First Name</label>
+      <div class="col-sm-10">
+        <input type="text" formControlName="firstName" class="form-control" id="name" placeholder="Name">
+
+      </div>
+    </div>
+
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-4">
+        <label for="name" class="col-sm-2 control-label">Last Name</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="lastName" class="form-control" id="name" placeholder="Name">
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-4">
+        <label for="no" class="col-sm-2 control-label">Mobile</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="no" class="form-control" id="no" placeholder="No">
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-4">
+        <label for="email" class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="email" class="form-control" id="email" placeholder="Email">
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-4">
+        <label for="address" class="col-sm-2 control-label">Address</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="address" class="form-control" id="address" placeholder="Address">
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-4">
+        <label for="state" class="col-sm-2 control-label">State</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="state" class="form-control" id="state">
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-12">
+      <div class="form-group col-sm-4">
+        <label for="Country" class="col-sm-2 control-label">Country</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="country" class="form-control" id="country" [(ngModel)]='country'/>
+        </div>
+      </div>
+    </div>
+<button (click)="save()" class="btn btn-primary">Save</button>
+  </form>
+</div>
+
+
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Sr</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Action</th>
+    </tr>
+
+  </thead>
+
+
+  <tbody>
+    <tr *ngFor="let user of userLists ; let i = index;">
+
+
+      <td> {{user.index}}</td>
+      <td>
+        {{user.firstName}}
+      </td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.no}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.address}}</td>
+      <td>{{user.state}}</td>
+      <td>{{user.country}}</td>
+
+      <td>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default btn" ng-click="edit(i)">Edit</button>
+          <button type="button" class="btn btn-default btn" ng-click="delete(i)">Delete</button>
+        </div>
+      </td>
+    </tr>
+    
+  </tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <td>
+              <input [(ngModel)]="field.Sr" class="form-control" type="text" name="{{field.(index+1)}}" />
+          </td>   -->
+  <!-- <td>
+              <input [(ngModel)]="field.name" class="form-control" type="text" name="{{field.firstname}}" />
+          </td>
+          <td>
+            <input [(ngModel)]="field.name" class="form-control" type="text" name="{{field.lastname}}" />
+        </td>
+          <td>
+              <input [(ngModel)]="field.no" class="form-control" type="text" name="{{field.no}}" />
+          </td>
+          <td>
+            <input [(ngModel)]="field.email" class="form-control" type="text" name="{{field.email}}" />
+        </td>
+        <td>
+          <input [(ngModel)]="field.address" class="form-control" type="text" name="{{field.address}}" />
+      </td>
+      <td>
+        <input [(ngModel)]="field.state" class="form-control" type="text" name="{{field.state}}" />
+    </td>
+    <td>
+      <input [(ngModel)]="field.country" class="form-control" type="text" name="{{field.country}}" />
+  </td>
+        <td>
+          <button class="btn btn-default"  type="button" (click)="editFieldValue(i)">Edit</button>
+      </td>
+          <td>
+              <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttribute.code" name="newAttributeCode" />
+          </td>
+          <td>
+              <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.name" name="newAttributeName" />
+          </td>
+          <td>
+              <input class="form-control" type="text" id="newAttributePrice" [(ngModel)]="newAttribute.price" name="newAttributePrice" />
+          </td>
+          <td>
+              <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+          </td>
+      </tr> -->
+  <!-- </tbody>  -->
+</table>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <tbody>
+      <tr *ngFor="let control of userForm.get('users').controls; let i=index">
+         <td>{{index + 1}}</td> 
+         <td>
+          {{users.FirstName}}
+        </td>
+        <td>{{users.LastName}}</td>
+        <td>{{users.Mobile}}</td>
+        <td>{{users.Email}}</td>
+        <td>{{users.Address}}</td>
+        <td>{{users.State}}</td>
+        <td>{{users.Country}}</td>  
+      
+           <td><div class="btn-group">
+                <button type="button" class="btn btn-default btn" ng-click="edit();">Edit</button>
+                <button type="button" class="btn btn-default btn" ng-click="delete();">Delete</button>
+                </div></td> 
+      </tr>
+    </tbody>
+  </table> -->
+
+<!-- <tbody *ngFor="let control of userForm.get('users').controls; let i=index">  
+    <tr [formGroup]="control">
+    <td  class="form-group">
+    <input type="text" class="form-control" formControlName="name" placeholder="name">
+    </td>
+    <td class="form-group">
+    <input type="text" class="form-control" formControlName="email" placeholder="email">
+    </td>
+    <td  class="form-group">
+    <input type="text" class="form-control" formControlName="mobNumber" placeholder="mobile number">
+    </td>
+    <td>
+    <button (click)="remove(i)" class="btn btn-primary mr-5">Remove</button>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </form>
+    <button (click)="addUser()" class="btn btn-primary mr-5">Add new</button>
+    <button (click)="save()" class="btn btn-primary">Save</button> -->
